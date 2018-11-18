@@ -12,7 +12,7 @@ def bpsk_module(arr):
     fc = 2205
     freq = 20 * fc
     coherent_carrier = np.dot(2 * pi * fc, np.arange(0, (100 * size) / freq, 1 / freq))
-    bpsk = np.cos(coherent_carrier + pi * (sampled_arr - 1)) #+ pi / 4)
+    bpsk = np.cos(coherent_carrier + pi * (sampled_arr - 1) + pi / 4)
     return bpsk
 
 def main():
