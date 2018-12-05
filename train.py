@@ -7,7 +7,7 @@ from generate_data import generate
 from demodulator_cnn import create_model
 
 def preprocess():
-    signal, (label_1, label_2) = generate()
+    signal, (label_1, label_2) = generate(10000, -2)
     input_train = np.empty((len(signal) - 20, 21))
     output_1_train = np.empty(len(signal) - 20)
     output_2_train = np.empty(len(signal) - 20)

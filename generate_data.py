@@ -26,8 +26,8 @@ def generate_label(arr):
     sampling_arr = np.arange(0, len(arr), 0.01)
     # label_arr_1 stands for phase shifting from 0 to pi
     # label_arr_2 for pi to 0
-    label_arr_1 = np.zeros(len(sampling_arr))
-    label_arr_2 = np.zeros(len(sampling_arr))
+    label_arr_1 = np.zeros(len(sampling_arr), dtype=np.int8)
+    label_arr_2 = np.zeros(len(sampling_arr), dtype=np.int8)
     # we don't care the last 100 points since phase shifting
     # will never happen within
     for i in range(len(sampling_arr) - 100):
@@ -47,10 +47,10 @@ def generate_label(arr):
         label_arr_2[i] = 0
     return label_arr_1, label_arr_2
 
-def generate():
+def generate(arr_size, snr = -2):
     # random signal size
-    ran_size = np.random.randint(16, 64)
-    arr = np.random.randint(0, 2, ran_size)
+    # ran_size = np.random.randint(16, 64)
+    arr = np.random.randint(0, 2, arr_size)
     data_signal = bpsk_module(arr)
-    data_signal = add_awgn(data_signal, 2)
+    data_signal = add_awgn(data_signal, snr)
     return (data_signal, generate_label(arr))
